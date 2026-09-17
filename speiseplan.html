@@ -3,919 +3,148 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Speiseplan – Kantine im JKI</title>
+<title>Speiseplan Kantine im JKI</title>
 <style>
-:root {
-    --brand-green: #215940;
-    --brand-green-light: #2e7856;
-    --brand-accent: #27ae60;
-    --brand-slate: #2c3e50;
-    --brand-gold: #d48817;
-    --brand-meat: #ea3829;
-    --bg-page: #f8faf9;
-    --card-bg: #ffffff;
-    --card-tint: #f5faf9;
-    --text-main: #222222;
-    --text-muted: #555555;
-    --text-subtle: #777777;
-    --border-color: #e2e8e4;
-    --border-focus: #27ae60;
-    --shadow-card: 0 4px 14px rgba(33, 89, 64, 0.07);
-    --shadow-hover: 0 8px 24px rgba(33, 89, 64, 0.14);
-    --radius-card: 12px;
-    --radius-pill: 9999px;
-}
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background-color: var(--bg-page);
-    color: var(--text-main);
-    line-height: 1.45;
-    padding: 16px 12px;
-    min-height: 100vh;
-}
-
-/* Header */
-.plan-header {
-    text-align: center;
-    margin-bottom: 20px;
-    padding: 6px 4px;
-}
-
-.logo-wrap {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 6px;
-}
-
-.logo-text {
-    font-family: "Brush Script MT", "Segoe Script", cursive, sans-serif;
-    font-size: 2.2rem;
-    color: var(--brand-green);
-    font-weight: bold;
-    letter-spacing: 0.5px;
-    line-height: 1.1;
-}
-
-.plan-title {
-    font-size: 1.35rem;
-    font-weight: 700;
-    color: var(--brand-slate);
-    margin-bottom: 4px;
-}
-
-.plan-subtitle {
-    font-size: 0.95rem;
-    color: var(--text-muted);
-    font-weight: 500;
-}
-
-/* Action Bar */
-.action-bar {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    margin: 16px 0 20px 0;
-}
-
-.view-toggle {
-    display: inline-flex;
-    background: #e7efe9;
-    border-radius: var(--radius-pill);
-    padding: 3px;
-    border: 1px solid var(--border-color);
-}
-
-.toggle-btn {
-    background: transparent;
-    border: none;
-    padding: 6px 16px;
-    font-size: 0.88rem;
-    font-weight: 600;
-    border-radius: var(--radius-pill);
-    cursor: pointer;
-    color: var(--brand-slate);
-    transition: all 0.2s ease;
-}
-
-.toggle-btn.active {
-    background: var(--brand-green);
-    color: #ffffff;
-    box-shadow: 0 2px 6px rgba(33, 89, 64, 0.25);
-}
-
-.btn-pdf-download {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: #ffffff;
-    color: var(--brand-green);
-    border: 1.5px solid var(--brand-green);
-    padding: 6px 16px;
-    font-size: 0.88rem;
-    font-weight: 600;
-    border-radius: var(--radius-pill);
-    text-decoration: none;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
-}
-
-.btn-pdf-download:hover {
-    background: var(--brand-green);
-    color: #ffffff;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 10px rgba(33, 89, 64, 0.2);
-}
-
-/* Soup & Dessert Bar */
-.specials-bar {
-    background: #ffffff;
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-card);
-    padding: 14px 20px;
-    margin-bottom: 24px;
-    box-shadow: var(--shadow-card);
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 12px 32px;
-}
-
-.special-item {
-    display: inline-flex;
-    align-items: baseline;
-    gap: 8px;
-    font-size: 0.95rem;
-    line-height: 1.4;
-    min-width: 240px;
-    flex: 1 1 auto;
-}
-
-.special-label {
-    font-weight: 700;
-    color: var(--brand-green);
-    white-space: nowrap;
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-}
-
-.special-text {
-    color: var(--text-main);
-}
-
-.day-extra-info {
-    margin-top: 10px;
-    padding: 8px 10px;
-    background: #f4f8f5;
-    border-left: 3px solid var(--brand-accent);
-    border-radius: 6px;
-    font-size: 0.8rem;
-    color: var(--brand-green);
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    line-height: 1.35;
-}
-
-.extra-icon {
-    font-size: 0.95rem;
-    flex-shrink: 0;
-}
-
-.extra-text {
-    font-style: italic;
-    font-weight: 500;
-}
-
-/* Mobile Day Selector (Pills) */
-.mobile-day-pills {
-    display: none;
-    justify-content: center;
-    gap: 6px;
-    margin-bottom: 14px;
-}
-
-.day-pill-btn {
-    background: #ffffff;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    padding: 6px 14px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--brand-slate);
-    cursor: pointer;
-    transition: all 0.15s ease;
-}
-
-.day-pill-btn.active {
-    background: var(--brand-green);
-    color: #ffffff;
-    border-color: var(--brand-green);
-}
-
-/* Grid layout for full week */
-.week-container {
-    display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 14px;
-    margin-bottom: 24px;
-}
-
-/* Day Column */
-.day-column {
-    background: var(--card-tint);
-    border-radius: var(--radius-card);
-    border: 1px solid var(--border-color);
-    box-shadow: var(--shadow-card);
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.day-column.is-today {
-    border: 2px solid var(--brand-accent);
-    background: #fcfffd;
-    box-shadow: 0 6px 18px rgba(39, 174, 96, 0.15);
-}
-
-.day-header {
-    padding: 12px 14px 10px 14px;
-    background: #ffffff;
-    border-bottom: 1px solid var(--border-color);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.day-title-wrap {
-    display: flex;
-    flex-direction: column;
-}
-
-.day-name {
-    font-size: 1.12rem;
-    font-weight: 700;
-    color: var(--brand-meat);
-    line-height: 1.2;
-}
-
-.day-underline {
-    width: 100%;
-    height: 3px;
-    background: var(--brand-meat);
-    border-radius: 2px;
-    margin-top: 4px;
-}
-
-.today-badge {
-    background: var(--brand-accent);
-    color: #ffffff;
-    font-size: 0.7rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    padding: 3px 7px;
-    border-radius: 4px;
-    letter-spacing: 0.5px;
-}
-
-.day-body {
-    padding: 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    flex-grow: 1;
-}
-
-/* Dish Cards */
-.dish-card {
-    background: #ffffff;
-    border-radius: 8px;
-    padding: 12px;
-    border: 1px solid #edf2ee;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    min-height: 135px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.03);
-    transition: all 0.2s ease;
-}
-
-.dish-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.07);
-}
-
-.dish-card.dish-holiday {
-    background: #fffafa;
-    border-left: 4px solid var(--brand-meat);
-    min-height: 180px;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-.dish-title {
-    font-size: 0.96rem;
-    font-weight: 700;
-    color: var(--brand-slate);
-    line-height: 1.3;
-    margin-bottom: 5px;
-}
-
-.dish-desc {
-    font-size: 0.84rem;
-    color: var(--text-muted);
-    line-height: 1.35;
-    margin-bottom: 8px;
-    flex-grow: 1;
-}
-
-.dish-meta {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 6px;
-    margin-top: 6px;
-    padding-top: 6px;
-    border-top: 1px dashed #edf2ee;
-}
-
-.dish-allergens {
-    font-size: 0.74rem;
-    font-style: italic;
-    color: var(--text-subtle);
-}
-
-.dish-price {
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: var(--brand-slate);
-    white-space: nowrap;
-}
-
-/* Badges */
-.badge-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-    margin-top: 4px;
-}
-
-.badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 3px;
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.2px;
-}
-
-.badge.fleisch { background: #fde8e7; color: var(--brand-meat); border: 1px solid #f9c9c6; }
-.badge.fisch { background: #e6f4fb; color: #1976d2; border: 1px solid #c2e2f6; }
-.badge.vegan-badge {
-    background: #e8f7ee;
-    color: #1b7a43;
-    border: 1px solid #c4ebd0;
-    font-size: 0.72rem;
-    padding: 3px 7px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    margin-top: 6px;
-}
-
-/* Single Day Focus Mode (ansicht=heute) */
-.heute-focus-wrap {
-    max-width: 780px;
-    margin: 0 auto 20px auto;
-}
-
-.heute-banner {
-    background: linear-gradient(135deg, var(--brand-green), #1b4b35);
-    color: #ffffff;
-    border-radius: var(--radius-card);
-    padding: 16px 20px;
-    margin-bottom: 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 4px 12px rgba(33, 89, 64, 0.2);
-}
-
-.heute-banner h2 {
-    font-size: 1.25rem;
-    font-weight: 700;
-}
-
-.heute-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 16px;
-    margin-bottom: 18px;
-}
-
-.weekend-card {
-    text-align: center;
-    padding: 36px 20px;
-    background: #ffffff;
-    border-radius: var(--radius-card);
-    border: 2px dashed #ccd9cf;
-    color: var(--text-muted);
-}
-
-.weekend-card h3 {
-    color: var(--brand-green);
-    margin-bottom: 8px;
-    font-size: 1.2rem;
-}
-
-/* Legend Footer */
-.plan-legend {
-    background: #ffffff;
-    border-radius: var(--radius-card);
-    border: 1px solid var(--border-color);
-    box-shadow: var(--shadow-card);
-    padding: 16px 20px;
-    font-size: 0.8rem;
-    color: var(--text-muted);
-}
-
-.legend-section {
-    margin-bottom: 8px;
-}
-
-.legend-section:last-child {
-    margin-bottom: 0;
-}
-
-.legend-title {
-    font-weight: 700;
-    color: var(--brand-slate);
-    margin-bottom: 3px;
-}
-
-/* Responsive Breakpoint for Mobile & Horizontal Scroll */
-@media (max-width: 991px) {
-    .specials-bar {
-        grid-template-columns: 1fr;
-        gap: 10px;
-    }
+:root { --primary: #2c3e50; --accent: #27ae60; --bg: transparent; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: var(--bg); padding: 5px; margin: 0; color: #333; }
+code
+Code
+/* Grid für zwei Gerichte nebeneinander auf Desktop, untereinander auf Handy */
+    .tages-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; margin-bottom: 5px; }
     
-    .mobile-day-pills {
-        display: flex;
-    }
+    .card { background: white; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); padding: 20px; border-top: 5px solid var(--primary); display: flex; flex-direction: column; justify-content: space-between;}
+    h2 { margin: 0 0 8px 0; font-size: 1.15rem; color: var(--primary); line-height: 1.3; }
+    .beschreibung { font-size: 0.95rem; color: #555; margin-bottom: 12px; line-height: 1.4; flex-grow: 1; }
+    .allergene { font-size: 0.75rem; color: #95a5a6; margin-bottom: 15px; font-style: italic; }
     
-    .week-container {
-        display: flex;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        gap: 14px;
-        padding-bottom: 14px;
-        margin-bottom: 16px;
-        /* Visible styled scrollbar */
-        scrollbar-width: thin;
-        scrollbar-color: var(--brand-accent) #e2e8f0;
-    }
+    .footer { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 10px; border-top: 1px solid #eee; padding-top: 15px;}
+    .preis { font-weight: 700; font-size: 1.2rem; color: var(--primary); }
     
-    .week-container::-webkit-scrollbar {
-        height: 7px;
-    }
+    .badges { display: flex; flex-wrap: wrap; gap: 5px; }
+    .badge { display: inline-block; padding: 4px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px; }
+    .badge.veg { background: #f1c40f; color: #333; }
+    .badge.vegan { background: var(--accent); color: white; }
+    .badge.fleisch { background: #e74c3c; color: white; }
+    .badge.fisch { background: #3498db; color: white; }
+    .badge.option { background: white; color: var(--accent); border: 1px solid var(--accent); }
     
-    .week-container::-webkit-scrollbar-track {
-        background: #e2e8e4;
-        border-radius: 4px;
-    }
+    /* Akkordeon */
+    details { background: white; border-radius: 10px; margin-bottom: 15px; box-shadow: 0 2px 6px rgba(0,0,0,0.06); }
+    summary { font-weight: 600; font-size: 1.1rem; padding: 15px 20px; cursor: pointer; list-style: none; outline: none; background: #fdfdfd; border-left: 5px solid #bdc3c7; transition: 0.2s; }
+    summary:hover { background: #f4f6f7; border-left-color: var(--primary); }
+    summary::-webkit-details-marker { display: none; }
+    details[open] summary { border-left-color: var(--primary); border-bottom: 1px solid #eee; }
+    .details-content { padding: 20px; background: #f8f9fa; border-radius: 0 0 10px 10px;}
     
-    .week-container::-webkit-scrollbar-thumb {
-        background: var(--brand-accent);
-        border-radius: 4px;
-    }
-    
-    .day-column {
-        flex: 0 0 85%;
-        max-width: 320px;
-        min-width: 275px;
-        scroll-snap-align: center;
-    }
-}
-
-@media print {
-    .action-bar, .mobile-day-pills {
-        display: none !important;
-    }
-    body {
-        background: #ffffff;
-        padding: 0;
-    }
-    .day-column {
-        break-inside: avoid;
-        box-shadow: none;
-    }
-}
+    .weekend { text-align: center; padding: 30px 20px; font-weight: bold; color: #7f8c8d; background: white; border-radius: 12px; border: 2px dashed #bdc3c7; }
 </style>
 </head>
 <body>
-
-<div class="plan-header">
-    <div class="logo-wrap">
-        <span class="logo-text">Kantine im JKI</span>
-    </div>
-    <h1 class="plan-title">Speiseplan</h1>
-    <div class="plan-subtitle">Kalenderwoche 38 (14.09. - 18.09.)</div>
-</div>
-
-<div class="action-bar">
-    <div class="view-toggle">
-        <button id="btnViewWoche" class="toggle-btn" onclick="setViewMode('woche')">📅 Ganze Woche</button>
-        <button id="btnViewHeute" class="toggle-btn" onclick="setViewMode('heute')">⭐ Heute</button>
-    </div>
-    <a href="Speiseplan_Kantine_JKI_KW38.pdf" target="_blank" download="Speiseplan_Kantine_JKI_KW38.pdf" class="btn-pdf-download" title="Speiseplan als PDF herunterladen oder ausdrucken">
-        📥 Als PDF herunterladen
-    </a>
-</div>
-
-<div class="specials-bar">
-    <div class="special-item"><span class="special-label">🍲 Tagessuppe:</span><span class="special-text">Blumenkohlcremesuppe (vegan) (I) 3,80 € | mit Bacon 5,00 €</span></div><div class="special-item"><span class="special-label">🍮 Tagesdessert:</span><span class="special-text">rote Grütze mit Vanillepudding (G, H) | 1,80 €</span></div>
-</div>
-
-<!-- Mobile quick day buttons -->
-<div class="mobile-day-pills" id="dayPillsWrap">
-    <button class="day-pill-btn" onclick="scrollToDay(1)">Mo</button>
-    <button class="day-pill-btn" onclick="scrollToDay(2)">Di</button>
-    <button class="day-pill-btn" onclick="scrollToDay(3)">Mi</button>
-    <button class="day-pill-btn" onclick="scrollToDay(4)">Do</button>
-    <button class="day-pill-btn" onclick="scrollToDay(5)">Fr</button>
-</div>
-
-<!-- Dynamic Container for Today or Week -->
-<div id="planContent"></div>
-
-<!-- Fixed Legend -->
-<div class="plan-legend">
-    <div class="legend-section">
-        <div class="legend-title">🥩 Fleisch- & Fischdeklaration:</div>
-        <div>1: Rind &nbsp;|&nbsp; 2: Schwein &nbsp;|&nbsp; 3: Geflügel &nbsp;|&nbsp; 4: Fisch</div>
-    </div>
-    <div class="legend-section">
-        <div class="legend-title">🌾 Allergenkennzeichnung:</div>
-        <div><strong>A:</strong> Gluten &nbsp;|&nbsp; <strong>C:</strong> Eier &nbsp;|&nbsp; <strong>D:</strong> Fisch &nbsp;|&nbsp; <strong>F:</strong> Soja &nbsp;|&nbsp; <strong>G:</strong> Milch/Laktose &nbsp;|&nbsp; <strong>H:</strong> Schalenfrüchte (Nüsse) &nbsp;|&nbsp; <strong>I:</strong> Sellerie &nbsp;|&nbsp; <strong>J:</strong> Senf &nbsp;|&nbsp; <strong>K:</strong> Sesmansamen &nbsp;|&nbsp; <strong>L:</strong> Schwefeldioxid / Sulfite &nbsp;|&nbsp; <strong>E:</strong> Erdnüsse</div>
-    </div>
-</div>
-
+<div id="app"></div>
+code
+Code
 <script>
-const wochenDaten = [
-  {
-    "tagId": 1,
-    "wochentag": "Montag",
-    "short": "Mo",
-    "feiertag": false,
-    "extra_info": "",
-    "gerichte": [
-      {
-        "titel": "Geschnetzeltes Züricher Art",
-        "fleisch_num": "2",
-        "beschreibung": "mit Champignons, Spätzle und Beilagensalat",
-        "allergene": "(C, G, H)",
-        "preis": "8,50 €",
-        "vegan": false
-      },
-      {
-        "titel": "Italienische Gemüsepfanne",
-        "fleisch_num": "",
-        "beschreibung": "mit Brokkoli, Blumenkohl, Bohnen, Champis, Paprika, Artischocken, Bandnudeln und Parmesan",
-        "allergene": "(A, G)",
-        "preis": "7,20 €",
-        "vegan": true
-      }
-    ]
-  },
-  {
-    "tagId": 2,
-    "wochentag": "Dienstag",
-    "short": "Di",
-    "feiertag": false,
-    "extra_info": "",
-    "gerichte": [
-      {
-        "titel": "Schweinebraten mit Kräuter-Gewürzhaube",
-        "fleisch_num": "2",
-        "beschreibung": "dazu Mandel-Brokkoli & Kräuterkartoffeln",
-        "allergene": "(A, C, I, J)",
-        "preis": "8,70 €",
-        "vegan": false
-      },
-      {
-        "titel": "Sellerieschnitzel",
-        "fleisch_num": "",
-        "beschreibung": "mit veganem Champignonrahm und Kartoffeln",
-        "allergene": "(A, C, G, I)",
-        "preis": "7,00 €",
-        "vegan": true
-      }
-    ]
-  },
-  {
-    "tagId": 3,
-    "wochentag": "Mittwoch",
-    "short": "Mi",
-    "feiertag": false,
-    "extra_info": "",
-    "gerichte": [
-      {
-        "titel": "Gebratenes Seelachsfilet",
-        "fleisch_num": "4",
-        "beschreibung": "auf Gemüsebett mit Dillrahmsoße und Kartoffeln",
-        "allergene": "(A, D, G, I)",
-        "preis": "8,70 €",
-        "vegan": false
-      },
-      {
-        "titel": "Kürbis-Buttermilch Curry",
-        "fleisch_num": "",
-        "beschreibung": "mit Hirse, Pink-Rettich und Koriander-Schluppen-Topping",
-        "allergene": "(G, J, L)",
-        "preis": "7,00 €",
-        "vegan": false
-      }
-    ]
-  },
-  {
-    "tagId": 4,
-    "wochentag": "Donnerstag",
-    "short": "Do",
-    "feiertag": false,
-    "extra_info": "",
-    "gerichte": [
-      {
-        "titel": "Klassische Blutwurst",
-        "fleisch_num": "2",
-        "beschreibung": "mit Sauerkraut und Kartoffeln",
-        "allergene": "(A, I)",
-        "preis": "8,00 €",
-        "vegan": false
-      },
-      {
-        "titel": "Allgäuer Spätzle-Pilz-Pfanne",
-        "fleisch_num": "",
-        "beschreibung": "mit Brokkoli, Champis, Tomaten & Emmentaler",
-        "allergene": "(A, C, G)",
-        "preis": "7,50 €",
-        "vegan": true
-      }
-    ]
-  },
-  {
-    "tagId": 5,
-    "wochentag": "Freitag",
-    "short": "Fr",
-    "feiertag": false,
-    "extra_info": "",
-    "gerichte": [
-      {
-        "titel": "Schnitzel Wiener Art",
-        "fleisch_num": "2",
-        "beschreibung": "mit grünen Bohnen, Sauce Hollandaise & Kartoffeln",
-        "allergene": "(A, C, G)",
-        "preis": "8,70 €",
-        "vegan": false
-      },
-      {
-        "titel": "Rigatoni mit Bockshornklee-Zitronen-Sahne-Soße",
-        "fleisch_num": "",
-        "beschreibung": "mit Schnittlauchöl und Rucola",
-        "allergene": "(A, C, G, H)",
-        "preis": "6,50 €",
-        "vegan": true
-      }
-    ]
-  }
-];
-
-const urlParams = new URLSearchParams(window.location.search);
-let currentMode = urlParams.get('ansicht') === 'heute' ? 'heute' : 'woche';
-
-// JS getDay(): 0=Sonntag, 1=Montag, ..., 5=Freitag, 6=Samstag
-const jsDay = new Date().getDay();
-const todayTagId = (jsDay >= 1 && jsDay <= 5) ? jsDay : null;
-
-function renderDishHtml(g) {
-    let meatBadge = '';
-    if (g.fleisch_num) {
-        const mapNum = {"1": ["🥩 Rind", "fleisch"], "2": ["🥩 Schwein", "fleisch"], "3": ["🍗 Geflügel", "fleisch"], "4": ["🐟 Fisch", "fisch"]};
-        if (mapNum[g.fleisch_num]) {
-            meatBadge = `<span class="badge ${mapNum[g.fleisch_num][1]}">${mapNum[g.fleisch_num][0]} (${g.fleisch_num})</span>`;
+    const wochenDaten = [
+        // DATEN_START
+        {
+          tagId: 1, wochentag: "Montag",
+          gerichte: [
+            { titel: "Geschnetzeltes Züricher Art", beschreibung: "mit Champignons, Spätzle und Beilagensalat", preis: "8,50 €", deklaration: "Schwein", allergene: "2, C, G, H", veganOption: false },
+            { titel: "Italienische Gemüsepfanne", beschreibung: "mit Brokkoli, Blumenkohl, Bohnen, Champis, Paprika, Artischocken, Bandnudeln und Parmesan", preis: "7,20 €", deklaration: "Vegetarisch", allergene: "A, G", veganOption: true }
+          ]
+        },
+        {
+          tagId: 2, wochentag: "Dienstag",
+          gerichte: [
+            { titel: "Schweinebraten mit Kräuter-Gewürzhaube", beschreibung: "dazu Mandel-Brokkoli & Kräuterkartoffeln", preis: "8,70 €", deklaration: "Schwein", allergene: "2, A, C, I, J", veganOption: false },
+            { titel: "Sellerieschnitzel", beschreibung: "mit veganem Champignonrahm und Kartoffeln", preis: "7,00 €", deklaration: "Vegetarisch", allergene: "A, C, G, I", veganOption: true }
+          ]
+        },
+        {
+          tagId: 3, wochentag: "Mittwoch",
+          gerichte: [
+            { titel: "Gebratenes Seelachsfilet", beschreibung: "auf Gemüsebett mit Dillrahmsoße und Kartoffeln", preis: "8,70 €", deklaration: "Fisch", allergene: "4, A, D, G, I", veganOption: false },
+            { titel: "Kürbis-Buttermilch Curry", beschreibung: "mit Hirse, Pink-Rettich und Koriander-Schluppen-Topping", preis: "7,00 €", deklaration: "Vegetarisch", allergene: "G, J, L", veganOption: false }
+          ]
+        },
+        {
+          tagId: 4, wochentag: "Donnerstag",
+          gerichte: [
+            { titel: "Klassische Blutwurst", beschreibung: "mit Sauerkraut und Kartoffeln", preis: "8,00 €", deklaration: "Schwein", allergene: "2, A, I", veganOption: false },
+            { titel: "Allgäuer Spätzle-Pilz-Pfanne", beschreibung: "mit Brokkoli, Champis, Tomaten & Emmentaler", preis: "7,50 €", deklaration: "Vegetarisch", allergene: "A, C, G", veganOption: true }
+          ]
+        },
+        {
+          tagId: 5, wochentag: "Freitag",
+          gerichte: [
+            { titel: "Schnitzel Wiener Art", beschreibung: "mit grünen Bohnen, Sauce Hollandaise & Kartoffeln", preis: "8,70 €", deklaration: "Schwein", allergene: "2, A, C, G", veganOption: false },
+            { titel: "Rigatoni mit Bockshornklee-Zitronen-Sahne-Soße", beschreibung: "mit Schnittlauchöl und Rucola", preis: "6,50 €", deklaration: "Vegetarisch", allergene: "A, C, G, H", veganOption: true }
+          ]
         }
-    }
-    
-    let veganBadge = '';
-    if (g.vegan) {
-        veganBadge = `<div class="badge vegan-badge">🌿 auch vegan möglich</div>`;
-    }
+        // DATEN_ENDE
+    ];
 
-    return `
-        <div class="dish-card">
-            <div>
-                <div class="dish-title">${g.titel}</div>
-                ${g.beschreibung ? `<div class="dish-desc">${g.beschreibung}</div>` : ''}
-                ${meatBadge ? `<div class="badge-row">${meatBadge}</div>` : ''}
-            </div>
-            <div>
-                ${veganBadge}
-                <div class="dish-meta">
-                    <span class="dish-allergens">${g.allergene ? `${g.allergene}` : ''}</span>
-                    <span class="dish-price">${g.preis}</span>
-                </div>
-            </div>
-        </div>
-    `;
-}
+    const urlParams = new URLSearchParams(window.location.search);
+    const ansicht = urlParams.get('ansicht');
+    let today = new Date().getDay();
+    const app = document.getElementById('app');
 
-function renderDayColumn(tag) {
-    const isToday = tag.tagId === todayTagId;
-    
-    let dishesHtml = '';
-    if (tag.feiertag) {
-        dishesHtml = `
-            <div class="dish-card dish-holiday">
-                <div style="font-size:1.6rem; margin-bottom:8px;">🚩</div>
-                <div style="font-weight:700; color:#ea3829; font-size:1.05rem; margin-bottom:4px;">Feiertag</div>
-                <div style="font-size:0.85rem; color:#555;">Die Küche bleibt heute geschlossen.</div>
-            </div>
-        `;
-    } else if (tag.gerichte.length === 0) {
-        dishesHtml = `<div class="dish-card"><div class="dish-desc" style="text-align:center; padding:20px;">Keine Gerichte eingetragen.</div></div>`;
-    } else {
-        dishesHtml = tag.gerichte.map(renderDishHtml).join('');
+    function getBadgeHtml(deklaration, veganOption) {
+        let html = '';
+        let bClass = 'fleisch'; // Default
+        let d = deklaration.toLowerCase();
+        
+        if(d.includes('veg') && !d.includes('vegan')) bClass = 'veg';
+        else if(d.includes('vegan')) bClass = 'vegan';
+        else if(d.includes('fisch')) bClass = 'fisch';
+        
+        html += `<span class="badge ${bClass}">${deklaration}</span>`;
+        if(veganOption) {
+            html += `<span class="badge option">Auch vegan erhältlich</span>`;
+        }
+        return html;
     }
 
-    let extraHtml = '';
-    if (tag.extra_info) {
-        extraHtml = `
-            <div class="day-extra-info">
-                <span class="extra-icon">💡</span>
-                <span class="extra-text">${tag.extra_info}</span>
-            </div>
-        `;
-    }
-
-    return `
-        <div class="day-column ${isToday ? 'is-today' : ''}" id="dayCol_${tag.tagId}">
-            <div class="day-header">
-                <div class="day-title-wrap">
-                    <span class="day-name">${tag.wochentag}</span>
-                    <div class="day-underline"></div>
-                </div>
-                ${isToday ? '<span class="today-badge">Heute</span>' : ''}
-            </div>
-            <div class="day-body">
-                ${dishesHtml}
-                ${extraHtml}
-            </div>
-        </div>
-    `;
-}
-
-function renderWoche() {
-    const container = document.getElementById('planContent');
-    const cols = wochenDaten.map(renderDayColumn).join('');
-    container.innerHTML = `<div class="week-container" id="weekGrid">${cols}</div>`;
-    
-    // Highlight active pill
-    updateDayPills();
-    
-    // Auto scroll to today on mobile if in view
-    if (todayTagId && window.innerWidth <= 991) {
-        setTimeout(() => {
-            scrollToDay(todayTagId, 'auto');
-        }, 100);
-    }
-}
-
-function renderHeute() {
-    const container = document.getElementById('planContent');
-    const heutigerTag = todayTagId ? wochenDaten.find(d => d.tagId === todayTagId) : null;
-    
-    if (!heutigerTag) {
-        container.innerHTML = `
-            <div class="heute-focus-wrap">
-                <div class="weekend-card">
-                    <h3>🍲 Willkommen in der Kantine im JKI!</h3>
-                    <p>Heute ist kein regulärer Kantinenbetrieb (Wochenende).<br>Wir freuen uns darauf, Sie ab Montag wieder mit frischen Gerichten begrüßen zu dürfen!</p>
-                    <div style="margin-top:16px;">
-                        <button onclick="setViewMode('woche')" class="btn-pdf-download" style="display:inline-block;">📅 Zur gesamten Wochenübersicht</button>
-                    </div>
-                </div>
-            </div>
-        `;
-        return;
-    }
-    
-    let dishesHtml = '';
-    if (heutigerTag.feiertag) {
-        dishesHtml = `
-            <div class="dish-card dish-holiday" style="padding:40px 20px;">
-                <div style="font-size:2rem; margin-bottom:8px;">🚩</div>
-                <div style="font-weight:700; color:#ea3829; font-size:1.2rem; margin-bottom:6px;">Feiertag</div>
-                <div style="font-size:0.95rem; color:#555;">Die Küche bleibt heute geschlossen.</div>
-            </div>
-        `;
-    } else {
-        dishesHtml = heutigerTag.gerichte.map(renderDishHtml).join('');
-    }
-
-    let extraHtml = '';
-    if (heutigerTag.extra_info) {
-        extraHtml = `
-            <div class="day-extra-info" style="margin-top:16px; padding:12px 14px; font-size:0.9rem;">
-                <span class="extra-icon">💡</span>
-                <span class="extra-text">${heutigerTag.extra_info}</span>
-            </div>
-        `;
-    }
-
-    container.innerHTML = `
-        <div class="heute-focus-wrap">
-            <div class="heute-banner">
+    function renderTagesContainer(tag) {
+        let kacheln = tag.gerichte.map(gericht => `
+            <div class="card">
                 <div>
-                    <h2>Die Gerichte von heute (${heutigerTag.wochentag})</h2>
-                    <span style="font-size:0.85rem; opacity:0.9;">Frisch gekocht für Sie in der Kantine im JKI</span>
+                    <h2>${gericht.titel}</h2>
+                    <div class="beschreibung">${gericht.beschreibung}</div>
+                    ${gericht.allergene ? `<div class="allergene">Allergene & Zusatzstoffe: ${gericht.allergene}</div>` : ''}
                 </div>
-                <button onclick="setViewMode('woche')" class="btn-pdf-download" style="background:#ffffff; color:var(--brand-green); font-size:0.82rem; padding:4px 12px;">
-                    Ganze Woche ➔
-                </button>
+                <div class="footer">
+                    <div class="badges">${getBadgeHtml(gericht.deklaration, gericht.veganOption)}</div>
+                    <div class="preis">${gericht.preis}</div>
+                </div>
             </div>
-            <div class="heute-grid">
-                ${dishesHtml}
-            </div>
-            ${extraHtml}
-        </div>
-    `;
-}
-
-function setViewMode(mode) {
-    currentMode = mode;
-    document.getElementById('btnViewWoche').classList.toggle('active', mode === 'woche');
-    document.getElementById('btnViewHeute').classList.toggle('active', mode === 'heute');
-    
-    const pills = document.getElementById('dayPillsWrap');
-    if (pills) {
-        pills.style.display = (mode === 'woche' && window.innerWidth <= 991) ? 'flex' : 'none';
+        `).join('');
+        
+        return `<div class="tages-container">${kacheln}</div>`;
     }
 
-    if (mode === 'heute') {
-        renderHeute();
+    if(ansicht === 'heute') {
+        const heutigesGericht = wochenDaten.find(d => d.tagId === today);
+        if(heutigesGericht) {
+            app.innerHTML = renderTagesContainer(heutigesGericht);
+        } else {
+            app.innerHTML = `<div class="weekend">Heute ist kein Kantinenbetrieb.<br>Wir wünschen ein schönes Wochenende!</div>`;
+        }
     } else {
-        renderWoche();
+        let html = '';
+        wochenDaten.forEach(tag => {
+            let isOpen = tag.tagId === today ? 'open' : '';
+            html += `
+                <details ${isOpen}>
+                    <summary>${tag.wochentag}</summary>
+                    <div class="details-content">
+                        ${renderTagesContainer(tag)}
+                    </div>
+                </details>
+            `;
+        });
+        app.innerHTML = html || '<div class="weekend">Noch kein Speiseplan für diese Woche verfügbar.</div>';
     }
-}
-
-function scrollToDay(tagId, behavior = 'smooth') {
-    const el = document.getElementById(`dayCol_${tagId}`);
-    const grid = document.getElementById('weekGrid');
-    if (el && grid) {
-        const left = el.offsetLeft - 16;
-        grid.scrollTo({ left: left, behavior: behavior });
-    }
-    
-    // Update active pill button
-    const btns = document.querySelectorAll('.day-pill-btn');
-    btns.forEach((b, idx) => {
-        b.classList.toggle('active', (idx + 1) === tagId);
-    });
-}
-
-function updateDayPills() {
-    const btns = document.querySelectorAll('.day-pill-btn');
-    btns.forEach((b, idx) => {
-        b.classList.toggle('active', (idx + 1) === todayTagId);
-    });
-}
-
-// Initialize
-window.addEventListener('resize', () => {
-    const pills = document.getElementById('dayPillsWrap');
-    if (pills) {
-        pills.style.display = (currentMode === 'woche' && window.innerWidth <= 991) ? 'flex' : 'none';
-    }
-});
-
-setViewMode(currentMode);
 </script>
 </body>
 </html>
