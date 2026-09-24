@@ -873,6 +873,7 @@ body {
 
 <script>
 const hasNextWeek = true;
+const saturdayCutoffIso = "2026-09-26T00:00:00";
 const kwCurrent = "39";
 const kwNext = "40";
 
@@ -936,10 +937,38 @@ const defaultView = "auto";
 
 let currentLang = 'de';
 let currentWeekTab = 'current'; // 'current' or 'next'
-let activeWochenDaten = wochenDatenCurrentDE;
-let activeSpecials = specialsCurrentDE;
+
+// Client-side automatic rollover: ab Samstag 00:00/00:01 Uhr wird Folgeplan zur aktuellen Woche
+let isRolledOver = false;
+if (hasNextWeek && saturdayCutoffIso) {
+    try {
+        const cutoffDate = new Date(saturdayCutoffIso);
+        const now = new Date();
+        if (!isNaN(cutoffDate.getTime()) && now >= cutoffDate) {
+            isRolledOver = true;
+        }
+    } catch (e) {
+        console.error('Error checking saturday cutoff:', e);
+    }
+}
 
 const urlParams = new URLSearchParams(window.location.search);
+
+// Allow URL override for testing & inspection: ?rollover=1 or ?rollover=0
+const urlRollover = urlParams.get('rollover');
+if (urlRollover === '1' || urlRollover === 'true') {
+    if (hasNextWeek) isRolledOver = true;
+} else if (urlRollover === '0' || urlRollover === 'false') {
+    isRolledOver = false;
+}
+
+if (isRolledOver) {
+    currentWeekTab = 'next';
+}
+
+let activeWochenDaten = (currentWeekTab === 'next') ? wochenDatenNextDE : wochenDatenCurrentDE;
+let activeSpecials = (currentWeekTab === 'next') ? specialsNextDE : specialsCurrentDE;
+
 const urlAnsicht = urlParams.get('ansicht');
 
 let currentMode;
@@ -1019,7 +1048,7 @@ function renderDishHtml(g) {
 }
 
 function renderDayColumn(tag) {
-    const isToday = (currentWeekTab === 'current') && (tag.tagId === todayTagId);
+    const isToday = (currentWeekTab === 'current' || isRolledOver) && (tag.tagId === todayTagId);
     const dateHtml = (showDates && tag.datum) ? `<span class="day-date">${tag.datum}</span>` : '';
     const todayBadgeText = (currentLang === 'en') ? 'Today' : 'Heute';
     
@@ -1092,7 +1121,7 @@ function renderWoche() {
     if (legend) legend.style.display = '';
 
     let weekendBannerHtml = '';
-    if ((jsDay === 0 || jsDay === 6) && weekendBannerText && (currentWeekTab === 'current')) {
+    if ((jsDay === 0 || jsDay === 6) && weekendBannerText && (currentWeekTab === 'current' || isRolledOver)) {
         const wbTitle = (currentLang === 'en') ? 'Weekend:' : 'Wochenende:';
         const wbText = (currentLang === 'en') ? 'The canteen is closed on Saturdays and Sundays.' : weekendBannerText;
         weekendBannerHtml = `
@@ -1110,8 +1139,8 @@ function renderWoche() {
     // Highlight active pill
     updateDayPills();
     
-    // Auto scroll to today on mobile if in view (only if on current week)
-    if (todayTagId && window.innerWidth <= 860 && currentWeekTab === 'current') {
+    // Auto scroll to today on mobile if in view (only if on current week or rolled over)
+    if (todayTagId && window.innerWidth <= 860 && (currentWeekTab === 'current' || isRolledOver)) {
         setTimeout(() => {
             scrollToDay(todayTagId, 'auto');
         }, 100);
@@ -1272,7 +1301,7 @@ function renderHeute() {
 }
 
 function setViewMode(mode) {
-    if (mode === 'heute' && currentWeekTab === 'next') {
+    if (mode === 'heute' && currentWeekTab === 'next' && !isRolledOver) {
         switchWeek('current');
     }
     currentMode = mode;
@@ -1311,12 +1340,12 @@ function scrollToDay(tagId, behavior = 'smooth') {
 function updateDayPills() {
     const btns = document.querySelectorAll('.day-pill-btn');
     btns.forEach((b, idx) => {
-        b.classList.toggle('active', (currentWeekTab === 'current') && ((idx + 1) === todayTagId));
+        b.classList.toggle('active', (currentWeekTab === 'current' || isRolledOver) && ((idx + 1) === todayTagId));
     });
 }
 
 function switchWeek(week) {
-    if (!hasNextWeek) return;
+    if (!hasNextWeek || isRolledOver) return;
     currentWeekTab = week;
 
     const btnCurrent = document.getElementById('btnWeekCurrent');
@@ -1348,6 +1377,13 @@ function updateWeekReferences() {
 }
 
 function updateUIForWeekAndLang() {
+    if (isRolledOver) {
+        const weekToggleWrap = document.getElementById('weekToggleWrap');
+        if (weekToggleWrap) {
+            weekToggleWrap.style.display = 'none';
+        }
+    }
+
     // Subtitle
     const planSubEl = document.querySelector('.plan-subtitle');
     if (planSubEl) {
@@ -1379,7 +1415,7 @@ function updateUIForWeekAndLang() {
             btnDownload.textContent = isEn ? '📥 Download PDF (EN)' : '📥 Als PDF herunterladen';
             btnDownload.setAttribute('href', isEn ? hrefNextEN : hrefNextDE);
             btnDownload.setAttribute('download', isEn ? filenameNextEN : filenameNextDE);
-            btnDownload.setAttribute('title', isEn ? 'Download next week menu as PDF' : 'Speiseplan der nächsten Woche als PDF herunterladen');
+            btnDownload.setAttribute('title', isEn ? (isRolledOver ? 'Download menu as PDF' : 'Download next week menu as PDF') : (isRolledOver ? 'Speiseplan als PDF herunterladen' : 'Speiseplan der nächsten Woche als PDF herunterladen'));
         } else {
             btnDownload.textContent = isEn ? '📥 Download PDF (EN)' : '📥 Als PDF herunterladen';
             btnDownload.setAttribute('href', isEn ? hrefCurrentEN : hrefCurrentDE);
@@ -1466,7 +1502,15 @@ if (document.fonts && document.fonts.ready) {
 const urlLang = urlParams.get('lang');
 const urlWoche = urlParams.get('woche') || urlParams.get('week') || urlParams.get('plan');
 
-if (hasNextWeek && (urlWoche === 'naechste' || urlWoche === 'next' || urlWoche === 'folgeplan')) {
+if (isRolledOver) {
+    currentWeekTab = 'next';
+    const weekToggleWrap = document.getElementById('weekToggleWrap');
+    if (weekToggleWrap) {
+        weekToggleWrap.style.display = 'none';
+    }
+    updateWeekReferences();
+    updateUIForWeekAndLang();
+} else if (hasNextWeek && (urlWoche === 'naechste' || urlWoche === 'next' || urlWoche === 'folgeplan')) {
     switchWeek('next');
 } else {
     updateWeekReferences();
