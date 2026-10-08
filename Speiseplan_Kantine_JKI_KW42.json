@@ -1,0 +1,197 @@
+{
+  "kw": "42",
+  "zeitraum": "12.-16.10.2026",
+  "titel_zusatz": "",
+  "tagessuppe": "Linsensuppe mit geräuchrtem Tofu (vegan) (I) 3,80 € | mit Wiener 5,00 €",
+  "tagesdessert": "Pflaumenkompott mit Vanillepudding (G) 1,80 €",
+  "extra_rubriken": [],
+  "specials_delta_h": 0.0,
+  "specials_gap": 50.0,
+  "dish2_offset": 0.0,
+  "tage": [
+    {
+      "tag": "Montag",
+      "datum": "12.10.",
+      "feiertag": false,
+      "extra_info": "",
+      "extra_info_bold": false,
+      "gerichte": [
+        {
+          "titel": "Geschnetzeltes Züricher Art",
+          "fleisch_num": "2",
+          "beschreibung": "mit Spätzle und Beilagensalat",
+          "allergene": "(A, C, G, H)",
+          "preis": "8,50",
+          "is_vegan": false,
+          "vegan_opt": false,
+          "vegan": false
+        },
+        {
+          "titel": "Sauerkraut-Zucchini-Schupfnudelpfanne",
+          "fleisch_num": "",
+          "beschreibung": "mit Knusper-Tofu",
+          "allergene": "(A, C, F, G, H, I)",
+          "preis": "7,00",
+          "is_vegan": true,
+          "vegan_opt": false,
+          "vegan": true
+        }
+      ]
+    },
+    {
+      "tag": "Dienstag",
+      "datum": "13.10.",
+      "feiertag": false,
+      "extra_info": "",
+      "extra_info_bold": false,
+      "gerichte": [
+        {
+          "titel": "Crispy Chicken",
+          "fleisch_num": "3",
+          "beschreibung": "mit gegrillten Drillingen, Zucchini-Zwiebel-Gemüse und Knoblauch-Parmesan-Dip",
+          "allergene": "(A, D, G, I, J, K, L)",
+          "preis": "8,70",
+          "is_vegan": false,
+          "vegan_opt": false,
+          "vegan": false
+        },
+        {
+          "titel": "Schmorgemüse",
+          "fleisch_num": "",
+          "beschreibung": "mit Kardamomkartoffeln und Frischkäse-Tomatensoße",
+          "allergene": "(G, I)",
+          "preis": "6,80",
+          "is_vegan": false,
+          "vegan_opt": true,
+          "vegan": true
+        }
+      ]
+    },
+    {
+      "tag": "Mittwoch",
+      "datum": "14.10.",
+      "feiertag": false,
+      "extra_info": "",
+      "extra_info_bold": false,
+      "gerichte": [
+        {
+          "titel": "Fischragout",
+          "fleisch_num": "4",
+          "beschreibung": "mit Tomaten-Zucchini-Gemüse und Mandelreis",
+          "allergene": "(C, D, G, H, I)",
+          "preis": "8,70",
+          "is_vegan": false,
+          "vegan_opt": false,
+          "vegan": false
+        },
+        {
+          "titel": "Gemüseserviettenknödel",
+          "fleisch_num": "",
+          "beschreibung": "mit Käse-Sahnesoße und gemischtem Blattsalat",
+          "allergene": "(A, C, G, I, J)",
+          "preis": "7,20",
+          "is_vegan": false,
+          "vegan_opt": false,
+          "vegan": false
+        }
+      ]
+    },
+    {
+      "tag": "Donnerstag",
+      "datum": "15.10.",
+      "feiertag": false,
+      "extra_info": "",
+      "extra_info_bold": false,
+      "gerichte": [
+        {
+          "titel": "Bratwurst",
+          "fleisch_num": "2",
+          "beschreibung": "mit Sauerkraut und Kartoffel-Sellerie-Stampf",
+          "allergene": "(I)",
+          "preis": "8,50",
+          "is_vegan": false,
+          "vegan_opt": false,
+          "vegan": false
+        },
+        {
+          "titel": "Grillkartoffeln mit Rosmarin",
+          "fleisch_num": "",
+          "beschreibung": "dazu Paprikagemüse, marinierter Tofu und Salat",
+          "allergene": "(A, F, I)",
+          "preis": "7,00",
+          "is_vegan": true,
+          "vegan_opt": false,
+          "vegan": true
+        }
+      ]
+    },
+    {
+      "tag": "Freitag",
+      "datum": "16.10.",
+      "feiertag": false,
+      "extra_info": "",
+      "extra_info_bold": false,
+      "gerichte": [
+        {
+          "titel": "Hamburger Schnitzel",
+          "fleisch_num": "2",
+          "beschreibung": "mit gebratenen Drillingen und Beilagensalat",
+          "allergene": "(A, C, K, L)",
+          "preis": "8,70",
+          "is_vegan": false,
+          "vegan_opt": false,
+          "vegan": false
+        },
+        {
+          "titel": "Pasta mit warmer Bruschetta",
+          "fleisch_num": "",
+          "beschreibung": "mit Rucola und Parmesan",
+          "allergene": "(A, C, G)",
+          "preis": "6,50",
+          "is_vegan": false,
+          "vegan_opt": true,
+          "vegan": true
+        }
+      ]
+    }
+  ],
+  "style_settings": {
+    "color_title": "#2c3e50",
+    "bold_title": true,
+    "color_desc": "#444444",
+    "bold_desc": false,
+    "color_price": "#333333",
+    "bold_price": true,
+    "color_allergens": "#666666",
+    "bold_allergens": false,
+    "color_extra": "#1e5638",
+    "bold_extra": false,
+    "color_specials": "#2c3e50",
+    "bold_specials": true,
+    "vegan_align": "left",
+    "specials_gap": 50.0
+  },
+  "rect_settings": {
+    "show": true,
+    "fill_hex": "#F5FAF9",
+    "opacity": 1.0,
+    "radius": 0.0,
+    "border_enabled": false,
+    "border_hex": "#DCE5E5",
+    "border_width": 0.5
+  },
+  "html_settings": {
+    "show_dates": true,
+    "heute_title": "Die Gerichte von heute ({wochentag})",
+    "heute_subtitle": "Frisch gekocht für Sie in der Kantine im JKI",
+    "weekend_banner": "Heute ist Wochenende – Die Kantine ist samstags und sonntags geschlossen.",
+    "weekend_title": "Schönes Wochenende!",
+    "desktop_format": "grid5",
+    "mobile_format": "swipe",
+    "default_view": "auto",
+    "display_mode": "grid5",
+    "pdf_download_mode": "embedded",
+    "pdf_external_url": "",
+    "kiosk_refresh_minutes": 0
+  }
+}
