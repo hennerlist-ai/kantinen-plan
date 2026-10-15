@@ -1,0 +1,197 @@
+{
+  "kw": "43",
+  "zeitraum": "19.-23.10.2026",
+  "titel_zusatz": "",
+  "tagessuppe": "Kürbissuppe (vegan) | 3,80 € (A, I)",
+  "tagesdessert": "Schoko- & Vanillepudding mit gebackenem Granola | 1,80 € (A, G, H)",
+  "extra_rubriken": [],
+  "specials_delta_h": 0.0,
+  "specials_gap": 50.0,
+  "dish2_offset": 0.0,
+  "tage": [
+    {
+      "tag": "Montag",
+      "datum": "19.10.",
+      "feiertag": false,
+      "extra_info": "",
+      "extra_info_bold": false,
+      "gerichte": [
+        {
+          "titel": "Schweinefilet",
+          "fleisch_num": "2",
+          "beschreibung": "sous vide gegart mit Jus, Petersilienkartoffeln und Kaisergemüse",
+          "allergene": "(A, G)",
+          "preis": "8,70 €",
+          "is_vegan": false,
+          "vegan_opt": false,
+          "vegan": false
+        },
+        {
+          "titel": "Gebackener Fetakäse",
+          "fleisch_num": "",
+          "beschreibung": "mit Blattspinat, Tomatengemüse und Bandnudeln",
+          "allergene": "(A, G)",
+          "preis": "7,20 €",
+          "is_vegan": false,
+          "vegan_opt": true,
+          "vegan": true
+        }
+      ]
+    },
+    {
+      "tag": "Dienstag",
+      "datum": "20.10.",
+      "feiertag": false,
+      "extra_info": "",
+      "extra_info_bold": false,
+      "gerichte": [
+        {
+          "titel": "Lasagne al forno",
+          "fleisch_num": "1, 2",
+          "beschreibung": "mit Salat",
+          "allergene": "(A, C, G, I, J, L)",
+          "preis": "8,50 €",
+          "is_vegan": false,
+          "vegan_opt": false,
+          "vegan": false
+        },
+        {
+          "titel": "Käsespätzle",
+          "fleisch_num": "",
+          "beschreibung": "mit Schmorzwiebeln und Salat",
+          "allergene": "(A, C, G, I, J, L)",
+          "preis": "6,80 €",
+          "is_vegan": false,
+          "vegan_opt": false,
+          "vegan": false
+        }
+      ]
+    },
+    {
+      "tag": "Mittwoch",
+      "datum": "21.10.",
+      "feiertag": false,
+      "extra_info": "",
+      "extra_info_bold": false,
+      "gerichte": [
+        {
+          "titel": "Tex-Mex-Hähnchen",
+          "fleisch_num": "3",
+          "beschreibung": "aus dem Ofen mit Mais, Bohnen und gegrillter Paprika, serviert mit braunem Reis und Maiscreme",
+          "allergene": "(G)",
+          "preis": "8,70 €",
+          "is_vegan": false,
+          "vegan_opt": false,
+          "vegan": false
+        },
+        {
+          "titel": "Weiße Kartoffelpizza",
+          "fleisch_num": "",
+          "beschreibung": "mit Zwiebelkompott, Grünkohl, frittiertem Rosmarin und Salat",
+          "allergene": "(A, G, J, L)",
+          "preis": "7,20 €",
+          "is_vegan": false,
+          "vegan_opt": true,
+          "vegan": true
+        }
+      ]
+    },
+    {
+      "tag": "Donnerstag",
+      "datum": "22.10.",
+      "feiertag": false,
+      "extra_info": "",
+      "extra_info_bold": false,
+      "gerichte": [
+        {
+          "titel": "Berliner Bauernpfanne",
+          "fleisch_num": "2",
+          "beschreibung": "mit Kartoffeln, gebratenen Knackern, Gewürzgurken, Spiegelei und grobem Senf",
+          "allergene": "(C, J, L)",
+          "preis": "8,50 €",
+          "is_vegan": false,
+          "vegan_opt": false,
+          "vegan": false
+        },
+        {
+          "titel": "Kumpir",
+          "fleisch_num": "",
+          "beschreibung": "mit Kräuter-Quark, gegrilltem Ofengemüse, Couscous & Salat",
+          "allergene": "(A, G, J, L)",
+          "preis": "7,00 €",
+          "is_vegan": false,
+          "vegan_opt": true,
+          "vegan": true
+        }
+      ]
+    },
+    {
+      "tag": "Freitag",
+      "datum": "23.10.",
+      "feiertag": false,
+      "extra_info": "",
+      "extra_info_bold": false,
+      "gerichte": [
+        {
+          "titel": "Schnitzel \"Wiener Art\"",
+          "fleisch_num": "2",
+          "beschreibung": "mit lauwarmen Kartoffel-Gurken-Salat, Knusperkapern und Preiselbeeren",
+          "allergene": "(A, C, G, J, L)",
+          "preis": "8,70 €",
+          "is_vegan": false,
+          "vegan_opt": false,
+          "vegan": false
+        },
+        {
+          "titel": "Limettenpasta",
+          "fleisch_num": "",
+          "beschreibung": "mit Erbsen, Pilzen und Cashewnüssen",
+          "allergene": "(A, H)",
+          "preis": "6,50 €",
+          "is_vegan": true,
+          "vegan_opt": false,
+          "vegan": true
+        }
+      ]
+    }
+  ],
+  "style_settings": {
+    "color_title": "#2c3e50",
+    "bold_title": true,
+    "color_desc": "#444444",
+    "bold_desc": false,
+    "color_price": "#333333",
+    "bold_price": true,
+    "color_allergens": "#666666",
+    "bold_allergens": false,
+    "color_extra": "#1e5638",
+    "bold_extra": false,
+    "color_specials": "#2c3e50",
+    "bold_specials": true,
+    "vegan_align": "left",
+    "specials_gap": 50.0
+  },
+  "rect_settings": {
+    "show": true,
+    "fill_hex": "#F5FAF9",
+    "opacity": 1.0,
+    "radius": 0.0,
+    "border_enabled": false,
+    "border_hex": "#DCE5E5",
+    "border_width": 0.5
+  },
+  "html_settings": {
+    "show_dates": true,
+    "heute_title": "Die Gerichte von heute ({wochentag})",
+    "heute_subtitle": "Frisch gekocht für Sie in der Kantine im JKI",
+    "weekend_banner": "Heute ist Wochenende – Die Kantine ist samstags und sonntags geschlossen.",
+    "weekend_title": "Schönes Wochenende!",
+    "desktop_format": "grid5",
+    "mobile_format": "swipe",
+    "default_view": "auto",
+    "display_mode": "grid5",
+    "pdf_download_mode": "relative",
+    "pdf_external_url": "",
+    "kiosk_refresh_minutes": 0
+  }
+}
