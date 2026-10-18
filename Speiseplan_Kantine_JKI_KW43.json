@@ -29,9 +29,9 @@
         {
           "titel": "Gebackener Fetakäse",
           "fleisch_num": "",
-          "beschreibung": "mit Blattspinat, Tomatengemüse und Bandnudeln",
-          "allergene": "(A, G)",
-          "preis": "7,20 €",
+          "beschreibung": "mit Blattspinat, Tomatengemüse und Rigatoni",
+          "allergene": "(A, C, G)",
+          "preis": "7,50 €",
           "is_vegan": false,
           "vegan_opt": true,
           "vegan": true
@@ -46,7 +46,7 @@
       "extra_info_bold": false,
       "gerichte": [
         {
-          "titel": "Lasagne al forno",
+          "titel": "Lasagne Al forno",
           "fleisch_num": "1, 2",
           "beschreibung": "mit Salat",
           "allergene": "(A, C, G, I, J, L)",
@@ -104,9 +104,9 @@
       "extra_info_bold": false,
       "gerichte": [
         {
-          "titel": "Berliner Bauernpfanne",
+          "titel": "Berliner Gröstl'",
           "fleisch_num": "2",
-          "beschreibung": "mit Kartoffeln, gebratenen Knackern, Gewürzgurken, Spiegelei und grobem Senf",
+          "beschreibung": "mit gebratenen Knackern, Gewürzgurken, Spiegelei und grobem Senf",
           "allergene": "(C, J, L)",
           "preis": "8,50 €",
           "is_vegan": false,
@@ -135,7 +135,7 @@
         {
           "titel": "Schnitzel \"Wiener Art\"",
           "fleisch_num": "2",
-          "beschreibung": "mit lauwarmen Kartoffel-Gurken-Salat, Knusperkapern und Preiselbeeren",
+          "beschreibung": "mit lauwarmem Kartoffel-Gurken-Salat, Knusperkapern und Preiselbeeren",
           "allergene": "(A, C, G, J, L)",
           "preis": "8,70 €",
           "is_vegan": false,
