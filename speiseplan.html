@@ -821,7 +821,10 @@ body {
 </div>
 
 <div class="action-bar">
-    
+    <div class="week-toggle" id="weekToggleWrap">
+        <button id="btnWeekCurrent" class="toggle-btn active" onclick="switchWeek('current')">📅 Aktuelle Woche (KW 43)</button>
+        <button id="btnWeekNext" class="toggle-btn" onclick="switchWeek('next')">⏭️ Nächste Woche (KW 44)</button>
+    </div>
     <div class="view-toggle">
         <button id="btnViewWoche" class="toggle-btn" onclick="setViewMode('woche')">📅 Ganze Woche</button>
         <button id="btnViewHeute" class="toggle-btn" onclick="setViewMode('heute')">⭐ Heute</button>
@@ -833,7 +836,7 @@ body {
             <option value="en">🇬🇧 English</option>
         </select>
     </div>
-    <a id="btnPdfDownload" href="Speiseplan_Kantine_JKI_KW43.pdf" download="Speiseplan_Kantine_JKI_KW43.pdf" class="btn-pdf-download" title="Speiseplan als PDF herunterladen">📥 Als PDF herunterladen</a>
+    <a id="btnPdfDownload" href="Speiseplan_Kantine_JKI_KW44.pdf" download="Speiseplan_Kantine_JKI_KW44.pdf" class="btn-pdf-download" title="Speiseplan als PDF herunterladen">📥 Als PDF herunterladen</a>
 </div>
 
 <div id="translationNotice" class="translation-notice" style="display: none;">
@@ -869,55 +872,55 @@ body {
 </div>
 
 <script>
-const hasNextWeek = false;
-const saturdayCutoffIso = "";
+const hasNextWeek = true;
+const saturdayCutoffIso = "2026-10-24T00:00:00";
 const kwCurrent = "43";
-const kwNext = "";
+const kwNext = "44";
 
 const fullTitleSubCurrentDE = "Kalenderwoche 43 (19.-23.10.2026)";
 const fullTitleSubCurrentEN = "Calendar Week 43 (19.-23.10.2026)";
-const fullTitleSubNextDE = "";
-const fullTitleSubNextEN = "";
+const fullTitleSubNextDE = "Kalenderwoche 44 (26.10. - 30.10.)";
+const fullTitleSubNextEN = "Calendar Week 44 (26.10. - 30.10.)";
 
 const fullTitleSubDE = fullTitleSubCurrentDE;
 const fullTitleSubEN = fullTitleSubCurrentEN;
 
 const wochenDatenCurrentDE = [{"tagId": 1, "wochentag": "Montag", "short": "Mo", "datum": "19.10.", "feiertag": false, "extra_info": "", "gerichte": [{"titel": "Schweinefilet", "fleisch_num": "2", "beschreibung": "sous vide gegart mit Jus, Petersilienkartoffeln und Kaisergemüse", "allergene": "(A, G)", "preis": "8,70 €", "is_vegan": false, "vegan_opt": false, "vegan": false, "vegan_align": "left"}, {"titel": "Gebackener Fetakäse", "fleisch_num": "", "beschreibung": "mit Blattspinat, Tomatengemüse und Rigatoni", "allergene": "(A, C, G)", "preis": "7,50 €", "is_vegan": false, "vegan_opt": true, "vegan": true, "vegan_align": "left"}]}, {"tagId": 2, "wochentag": "Dienstag", "short": "Di", "datum": "20.10.", "feiertag": false, "extra_info": "", "gerichte": [{"titel": "Lasagne Al forno", "fleisch_num": "1, 2", "beschreibung": "mit Salat", "allergene": "(A, C, G, I, J, L)", "preis": "8,50 €", "is_vegan": false, "vegan_opt": false, "vegan": false, "vegan_align": "left"}, {"titel": "Käsespätzle", "fleisch_num": "", "beschreibung": "mit Schmorzwiebeln und Salat", "allergene": "(A, C, G, I, J, L)", "preis": "6,80 €", "is_vegan": false, "vegan_opt": false, "vegan": false, "vegan_align": "left"}]}, {"tagId": 3, "wochentag": "Mittwoch", "short": "Mi", "datum": "21.10.", "feiertag": false, "extra_info": "", "gerichte": [{"titel": "Tex-Mex-Hähnchen", "fleisch_num": "3", "beschreibung": "aus dem Ofen mit Mais, Bohnen und gegrillter Paprika, serviert mit Reis und Maiscreme", "allergene": "(G)", "preis": "8,70 €", "is_vegan": false, "vegan_opt": false, "vegan": false, "vegan_align": "left"}, {"titel": "Weiße Kartoffelpizza", "fleisch_num": "", "beschreibung": "mit Zwiebelkompott, Grünkohl, frittiertem Rosmarin und Salat", "allergene": "(A, G, J, L)", "preis": "7,20 €", "is_vegan": false, "vegan_opt": true, "vegan": true, "vegan_align": "left"}]}, {"tagId": 4, "wochentag": "Donnerstag", "short": "Do", "datum": "22.10.", "feiertag": false, "extra_info": "", "gerichte": [{"titel": "Berliner Gröstl'", "fleisch_num": "2", "beschreibung": "mit gebratenen Knackern, Gewürzgurken, Spiegelei und grobem Senf", "allergene": "(C, J, L)", "preis": "8,50 €", "is_vegan": false, "vegan_opt": false, "vegan": false, "vegan_align": "left"}, {"titel": "Kumpir", "fleisch_num": "", "beschreibung": "mit Kräuter-Quark, gegrilltem Ofengemüse, Couscous & Salat", "allergene": "(A, G, J, L)", "preis": "7,00 €", "is_vegan": false, "vegan_opt": true, "vegan": true, "vegan_align": "left"}]}, {"tagId": 5, "wochentag": "Freitag", "short": "Fr", "datum": "23.10.", "feiertag": false, "extra_info": "", "gerichte": [{"titel": "Schnitzel \"Wiener Art\"", "fleisch_num": "2", "beschreibung": "mit lauwarmem Kartoffel-Gurken-Salat, Knusperkapern und Preiselbeeren", "allergene": "(A, C, G, J, L)", "preis": "8,70 €", "is_vegan": false, "vegan_opt": false, "vegan": false, "vegan_align": "left"}, {"titel": "Limettenpasta", "fleisch_num": "", "beschreibung": "mit Erbsen, Pilzen und Cashewnüssen", "allergene": "(A, H)", "preis": "6,50 €", "is_vegan": true, "vegan_opt": false, "vegan": true, "vegan_align": "left"}]}];
 const wochenDatenCurrentEN = [{"tagId": 1, "wochentag": "Monday", "short": "Mon", "datum": "19.10.", "feiertag": false, "extra_info": "", "gerichte": [{"titel": "Pork tenderloin", "fleisch_num": "2", "beschreibung": "Cooked sous vide with jus, parsley potatoes and imperial vegetables", "allergene": "(A, G)", "preis": "8,70 €", "is_vegan": false, "vegan_opt": false, "vegan": false, "vegan_align": "left"}, {"titel": "Baked feta cheese", "fleisch_num": "", "beschreibung": "with leaf spinach, tomato vegetables and rigatoni", "allergene": "(A, C, G)", "preis": "7,50 €", "is_vegan": false, "vegan_opt": true, "vegan": true, "vegan_align": "left"}]}, {"tagId": 2, "wochentag": "Tuesday", "short": "Tue", "datum": "20.10.", "feiertag": false, "extra_info": "", "gerichte": [{"titel": "Lasagna al forno", "fleisch_num": "1, 2", "beschreibung": "with salad", "allergene": "(A, C, G, I, J, L)", "preis": "8,50 €", "is_vegan": false, "vegan_opt": false, "vegan": false, "vegan_align": "left"}, {"titel": "Cheese spaetzle", "fleisch_num": "", "beschreibung": "with braised onions and salad", "allergene": "(A, C, G, I, J, L)", "preis": "6,80 €", "is_vegan": false, "vegan_opt": false, "vegan": false, "vegan_align": "left"}]}, {"tagId": 3, "wochentag": "Wednesday", "short": "Wed", "datum": "21.10.", "feiertag": false, "extra_info": "", "gerichte": [{"titel": "Tex-Mex chicken", "fleisch_num": "3", "beschreibung": "from the oven with corn, beans and grilled peppers, served with rice and corn cream", "allergene": "(G)", "preis": "8,70 €", "is_vegan": false, "vegan_opt": false, "vegan": false, "vegan_align": "left"}, {"titel": "White potato pizza", "fleisch_num": "", "beschreibung": "with onion compote, kale, fried rosemary and salad", "allergene": "(A, G, J, L)", "preis": "7,20 €", "is_vegan": false, "vegan_opt": true, "vegan": true, "vegan_align": "left"}]}, {"tagId": 4, "wochentag": "Thursday", "short": "Thu", "datum": "22.10.", "feiertag": false, "extra_info": "", "gerichte": [{"titel": "Berlin Gröstl'", "fleisch_num": "2", "beschreibung": "with fried crackers, pickles, fried eggs and coarse mustard", "allergene": "(C, J, L)", "preis": "8,50 €", "is_vegan": false, "vegan_opt": false, "vegan": false, "vegan_align": "left"}, {"titel": "Kumpir", "fleisch_num": "", "beschreibung": "with herb quark, grilled oven vegetables, couscous & salad", "allergene": "(A, G, J, L)", "preis": "7,00 €", "is_vegan": false, "vegan_opt": true, "vegan": true, "vegan_align": "left"}]}, {"tagId": 5, "wochentag": "Friday", "short": "Fri", "datum": "23.10.", "feiertag": false, "extra_info": "", "gerichte": [{"titel": "Schnitzel “Viennese style”", "fleisch_num": "2", "beschreibung": "with lukewarm potato and cucumber salad, crispy capers and cranberries", "allergene": "(A, C, G, J, L)", "preis": "8,70 €", "is_vegan": false, "vegan_opt": false, "vegan": false, "vegan_align": "left"}, {"titel": "Lime pasta", "fleisch_num": "", "beschreibung": "with peas, mushrooms and cashews", "allergene": "(A, H)", "preis": "6,50 €", "is_vegan": true, "vegan_opt": false, "vegan": true, "vegan_align": "left"}]}];
-const wochenDatenNextDE = [];
-const wochenDatenNextEN = [];
+const wochenDatenNextDE = [{"tagId": 1, "wochentag": "Montag", "short": "Mo", "datum": "26.10.", "feiertag": false, "extra_info": "", "gerichte": [{"titel": "Wurst-Gulasch", "fleisch_num": "2", "beschreibung": "mit Spirellinudeln", "allergene": "(A, F, I, J)", "preis": "7,80 €", "is_vegan": false, "vegan_opt": false, "vegan": false, "vegan_align": "left"}, {"titel": "Vegetarische Lasagne", "fleisch_num": "", "beschreibung": "mit Räuchertofu, Champignons und Salat", "allergene": "(A, F, G, I, J, L)", "preis": "7,50 €", "is_vegan": false, "vegan_opt": false, "vegan": false, "vegan_align": "left"}]}, {"tagId": 2, "wochentag": "Dienstag", "short": "Di", "datum": "27.10.", "feiertag": false, "extra_info": "", "gerichte": [{"titel": "Chicken Alfredo Auflauf", "fleisch_num": "3", "beschreibung": "überbackene Pasta in cremiger Käse-Sahnesoße", "allergene": "(A, G, J, L)", "preis": "8,50 €", "is_vegan": false, "vegan_opt": false, "vegan": false, "vegan_align": "left"}, {"titel": "Vegetarisches Moussaka", "fleisch_num": "", "beschreibung": "mit Fladenbrot und Hummus", "allergene": "(A, F, G, I, K)", "preis": "6,80 €", "is_vegan": false, "vegan_opt": false, "vegan": false, "vegan_align": "left"}]}, {"tagId": 3, "wochentag": "Mittwoch", "short": "Mi", "datum": "28.10.", "feiertag": false, "extra_info": "", "gerichte": [{"titel": "Gebratenes Tilapiafilet", "fleisch_num": "4", "beschreibung": "mit Zitronen-Thymiansoße, gebackenem Blumenkohl und Dillkartoffeln", "allergene": "(A, D, G, L)", "preis": "8,70 €", "is_vegan": false, "vegan_opt": false, "vegan": false, "vegan_align": "left"}, {"titel": "Rote-Bete-Risotto", "fleisch_num": "", "beschreibung": "mit Ziegenkäse, Sprossen und Haselnüssen", "allergene": "(G, H, I, L)", "preis": "7,50 €", "is_vegan": false, "vegan_opt": true, "vegan": true, "vegan_align": "left"}]}, {"tagId": 4, "wochentag": "Donnerstag", "short": "Do", "datum": "29.10.", "feiertag": false, "extra_info": "", "gerichte": [{"titel": "Rheinisches Gulasch", "fleisch_num": "1", "beschreibung": "mit geschmortem Rosenkohl und Kartoffeln", "allergene": "(A, I, L)", "preis": "8,70 €", "is_vegan": false, "vegan_opt": false, "vegan": false, "vegan_align": "left"}, {"titel": "Italienische Gemüsepfanne", "fleisch_num": "", "beschreibung": "mit Brokkoli, Blumenkohl, Bohnen, Champignons, Paprika, Artischocken, Rigatoni und Parmesan", "allergene": "(A, G)", "preis": "7,50 €", "is_vegan": false, "vegan_opt": true, "vegan": true, "vegan_align": "left"}]}, {"tagId": 5, "wochentag": "Freitag", "short": "Fr", "datum": "30.10.", "feiertag": false, "extra_info": "", "gerichte": [{"titel": "Schweineschnitzel", "fleisch_num": "2", "beschreibung": "mit Salbeisoße, Speck-Bohnen und Ofenkartoffeln", "allergene": "(A, C, G, L)", "preis": "8,70 €", "is_vegan": false, "vegan_opt": false, "vegan": false, "vegan_align": "left"}, {"titel": "Gnocchi", "fleisch_num": "", "beschreibung": "mit Basilikumcreme", "allergene": "(A, C, G, H)", "preis": "7,50 €", "is_vegan": false, "vegan_opt": true, "vegan": true, "vegan_align": "left"}]}];
+const wochenDatenNextEN = [{"tagId": 1, "wochentag": "Monday", "short": "Mon", "datum": "26.10.", "feiertag": false, "extra_info": "", "gerichte": [{"titel": "Sausage goulash", "fleisch_num": "2", "beschreibung": "with spiral noodles", "allergene": "(A, F, I, J)", "preis": "7,80 €", "is_vegan": false, "vegan_opt": false, "vegan": false, "vegan_align": "left"}, {"titel": "Vegetarian lasagna", "fleisch_num": "", "beschreibung": "with smoked tofu, mushrooms and salad", "allergene": "(A, F, G, I, J, L)", "preis": "7,50 €", "is_vegan": false, "vegan_opt": false, "vegan": false, "vegan_align": "left"}]}, {"tagId": 2, "wochentag": "Tuesday", "short": "Tue", "datum": "27.10.", "feiertag": false, "extra_info": "", "gerichte": [{"titel": "Chicken Alfredo casserole", "fleisch_num": "3", "beschreibung": "Baked pasta in a creamy cheese sauce", "allergene": "(A, G, J, L)", "preis": "8,50 €", "is_vegan": false, "vegan_opt": false, "vegan": false, "vegan_align": "left"}, {"titel": "Vegetarian moussaka", "fleisch_num": "", "beschreibung": "with flatbread and hummus", "allergene": "(A, F, G, I, K)", "preis": "6,80 €", "is_vegan": false, "vegan_opt": false, "vegan": false, "vegan_align": "left"}]}, {"tagId": 3, "wochentag": "Wednesday", "short": "Wed", "datum": "28.10.", "feiertag": false, "extra_info": "", "gerichte": [{"titel": "Fried tilapia fillet", "fleisch_num": "4", "beschreibung": "with lemon-thyme sauce, baked cauliflower and dill potatoes", "allergene": "(A, D, G, L)", "preis": "8,70 €", "is_vegan": false, "vegan_opt": false, "vegan": false, "vegan_align": "left"}, {"titel": "Beetroot risotto", "fleisch_num": "", "beschreibung": "with goat cheese, sprouts and hazelnuts", "allergene": "(G, H, I, L)", "preis": "7,50 €", "is_vegan": false, "vegan_opt": true, "vegan": true, "vegan_align": "left"}]}, {"tagId": 4, "wochentag": "Thursday", "short": "Thu", "datum": "29.10.", "feiertag": false, "extra_info": "", "gerichte": [{"titel": "Rhenish goulash", "fleisch_num": "1", "beschreibung": "with braised Brussels sprouts and potatoes", "allergene": "(A, I, L)", "preis": "8,70 €", "is_vegan": false, "vegan_opt": false, "vegan": false, "vegan_align": "left"}, {"titel": "Italian vegetable pan", "fleisch_num": "", "beschreibung": "with broccoli, cauliflower, beans, mushrooms, peppers, artichokes, rigatoni and Parmesan", "allergene": "(A, G)", "preis": "7,50 €", "is_vegan": false, "vegan_opt": true, "vegan": true, "vegan_align": "left"}]}, {"tagId": 5, "wochentag": "Friday", "short": "Fri", "datum": "30.10.", "feiertag": false, "extra_info": "", "gerichte": [{"titel": "Pork schnitzel", "fleisch_num": "2", "beschreibung": "with sage sauce, bacon beans and baked potatoes", "allergene": "(A, C, G, L)", "preis": "8,70 €", "is_vegan": false, "vegan_opt": false, "vegan": false, "vegan_align": "left"}, {"titel": "Gnocchi", "fleisch_num": "", "beschreibung": "with basil cream", "allergene": "(A, C, G, H)", "preis": "7,50 €", "is_vegan": false, "vegan_opt": true, "vegan": true, "vegan_align": "left"}]}];
 
 const wochenDatenDE = wochenDatenCurrentDE;
 const wochenDatenEN = wochenDatenCurrentEN;
 
 const specialsCurrentDE = [{"icon": "🍲", "label": "Tagessuppe:", "text": "Kürbissuppe (vegan) | 3,80 € (A, I)"}, {"icon": "🍮", "label": "Tagesdessert:", "text": "Schoko- & Vanillepudding mit gebackenem Granola | 1,80 € (A, G, H)"}];
 const specialsCurrentEN = [{"icon": "🍲", "label": "Daily soup:", "text": "Pumpkin soup (vegan) | €3.80 (A, I)"}, {"icon": "🍮", "label": "Daily dessert:", "text": "Chocolate & vanilla pudding with baked granola | €1.80 (A, G, H)"}];
-const specialsNextDE = [];
-const specialsNextEN = [];
+const specialsNextDE = [{"icon": "🍲", "label": "Tagessuppe:", "text": "Linsen-Tomatensuppe (vegan) | 3,80 € (A. I)"}, {"icon": "🍮", "label": "Tagesdessert:", "text": "Schoko- & Vanillepudding mit gebackenem Granola | 2,00 € (A, G, H)"}];
+const specialsNextEN = [{"icon": "🍲", "label": "Daily soup:", "text": "Lentil and tomato soup (vegan) | €3.80 (A.I)"}, {"icon": "🍮", "label": "Daily dessert:", "text": "Chocolate & vanilla pudding with baked granola | €2.00 (A, G, H)"}];
 
 const specialsDE = specialsCurrentDE;
 const specialsEN = specialsCurrentEN;
 
 const allergenLegendCurrentDE = "<strong>A:</strong> Gluten &nbsp;|&nbsp; <strong>C:</strong> Eier &nbsp;|&nbsp; <strong>D:</strong> Fisch &nbsp;|&nbsp; <strong>F:</strong> Soja &nbsp;|&nbsp; <strong>G:</strong> Milch/Laktose &nbsp;|&nbsp; <strong>H:</strong> Schalenfrüchte (Nüsse) &nbsp;|&nbsp; <strong>I:</strong> Sellerie &nbsp;|&nbsp; <strong>J:</strong> Senf &nbsp;|&nbsp; <strong>K:</strong> Sesmansamen &nbsp;|&nbsp; <strong>L:</strong> Schwefeldioxid / Sulfite &nbsp;|&nbsp; <strong>E:</strong> Erdnüsse";
 const allergenLegendCurrentEN = "<strong>A:</strong> Gluten &nbsp;|&nbsp; <strong>C:</strong> Eggs &nbsp;|&nbsp; <strong>D:</strong> Fish &nbsp;|&nbsp; <strong>F:</strong> Soy &nbsp;|&nbsp; <strong>G:</strong> Milk/Lactose &nbsp;|&nbsp; <strong>H:</strong> Tree nuts &nbsp;|&nbsp; <strong>I:</strong> Celery &nbsp;|&nbsp; <strong>J:</strong> Mustard &nbsp;|&nbsp; <strong>K:</strong> Sesame seeds &nbsp;|&nbsp; <strong>L:</strong> Sulphites &nbsp;|&nbsp; <strong>E:</strong> Peanuts";
-const allergenLegendNextDE = "";
-const allergenLegendNextEN = "";
+const allergenLegendNextDE = "<strong>A:</strong> Gluten &nbsp;|&nbsp; <strong>C:</strong> Eier &nbsp;|&nbsp; <strong>D:</strong> Fisch &nbsp;|&nbsp; <strong>F:</strong> Soja &nbsp;|&nbsp; <strong>G:</strong> Milch/Laktose &nbsp;|&nbsp; <strong>H:</strong> Schalenfrüchte (Nüsse) &nbsp;|&nbsp; <strong>I:</strong> Sellerie &nbsp;|&nbsp; <strong>J:</strong> Senf &nbsp;|&nbsp; <strong>K:</strong> Sesmansamen &nbsp;|&nbsp; <strong>L:</strong> Schwefeldioxid / Sulfite &nbsp;|&nbsp; <strong>E:</strong> Erdnüsse";
+const allergenLegendNextEN = "<strong>A:</strong> Gluten &nbsp;|&nbsp; <strong>C:</strong> Eggs &nbsp;|&nbsp; <strong>D:</strong> Fish &nbsp;|&nbsp; <strong>F:</strong> Soy &nbsp;|&nbsp; <strong>G:</strong> Milk/Lactose &nbsp;|&nbsp; <strong>H:</strong> Tree nuts &nbsp;|&nbsp; <strong>I:</strong> Celery &nbsp;|&nbsp; <strong>J:</strong> Mustard &nbsp;|&nbsp; <strong>K:</strong> Sesame seeds &nbsp;|&nbsp; <strong>L:</strong> Sulphites &nbsp;|&nbsp; <strong>E:</strong> Peanuts";
 
 const allergenLegendDE = allergenLegendCurrentDE;
 const allergenLegendEN = allergenLegendCurrentEN;
 
-const hrefCurrentDE = "Speiseplan_Kantine_JKI_KW43.pdf";
-const hrefCurrentEN = "Speiseplan_Kantine_JKI_KW43_EN.pdf";
-const hrefNextDE = "";
-const hrefNextEN = "";
+const hrefCurrentDE = "Speiseplan_Kantine_JKI_KW44.pdf";
+const hrefCurrentEN = "Speiseplan_Kantine_JKI_KW44_EN.pdf";
+const hrefNextDE = "Speiseplan_Kantine_JKI_KW44.pdf";
+const hrefNextEN = "Speiseplan_Kantine_JKI_KW44_EN.pdf";
 
 const hrefDE = hrefCurrentDE;
 const hrefEN = hrefCurrentEN;
 
-const filenameCurrentDE = "Speiseplan_Kantine_JKI_KW43.pdf";
-const filenameCurrentEN = "Speiseplan_Kantine_JKI_KW43_EN.pdf";
-const filenameNextDE = "";
-const filenameNextEN = "";
+const filenameCurrentDE = "Speiseplan_Kantine_JKI_KW44.pdf";
+const filenameCurrentEN = "Speiseplan_Kantine_JKI_KW44_EN.pdf";
+const filenameNextDE = "Speiseplan_Kantine_JKI_KW44.pdf";
+const filenameNextEN = "Speiseplan_Kantine_JKI_KW44_EN.pdf";
 
 const filenameDE = filenameCurrentDE;
 const filenameEN = filenameCurrentEN;

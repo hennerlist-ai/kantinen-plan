@@ -1,0 +1,197 @@
+{
+  "kw": "44",
+  "zeitraum": "26.10. - 30.10.",
+  "titel_zusatz": "",
+  "tagessuppe": "Linsen-Tomatensuppe (vegan) | 3,80 € (A. I)",
+  "tagesdessert": "Schoko- & Vanillepudding mit gebackenem Granola | 2,00 € (A, G, H)",
+  "extra_rubriken": [],
+  "specials_delta_h": 0.0,
+  "specials_gap": 50.0,
+  "dish2_offset": 0.0,
+  "tage": [
+    {
+      "tag": "Montag",
+      "datum": "26.10.",
+      "feiertag": false,
+      "extra_info": "",
+      "extra_info_bold": false,
+      "gerichte": [
+        {
+          "titel": "Wurst-Gulasch",
+          "fleisch_num": "2",
+          "beschreibung": "mit Spirellinudeln",
+          "allergene": "(A, F, I, J)",
+          "preis": "7,80 €",
+          "is_vegan": false,
+          "vegan_opt": false,
+          "vegan": false
+        },
+        {
+          "titel": "Vegetarische Lasagne",
+          "fleisch_num": "",
+          "beschreibung": "mit Räuchertofu, Champignons und Salat",
+          "allergene": "(A, F, G, I, J, L)",
+          "preis": "7,50 €",
+          "is_vegan": false,
+          "vegan_opt": false,
+          "vegan": false
+        }
+      ]
+    },
+    {
+      "tag": "Dienstag",
+      "datum": "27.10.",
+      "feiertag": false,
+      "extra_info": "",
+      "extra_info_bold": false,
+      "gerichte": [
+        {
+          "titel": "Chicken Alfredo Auflauf",
+          "fleisch_num": "3",
+          "beschreibung": "überbackene Pasta in cremiger Käse-Sahnesoße",
+          "allergene": "(A, G, J, L)",
+          "preis": "8,50 €",
+          "is_vegan": false,
+          "vegan_opt": false,
+          "vegan": false
+        },
+        {
+          "titel": "Vegetarisches Moussaka",
+          "fleisch_num": "",
+          "beschreibung": "mit Fladenbrot und Hummus",
+          "allergene": "(A, F, G, I, K)",
+          "preis": "6,80 €",
+          "is_vegan": false,
+          "vegan_opt": false,
+          "vegan": false
+        }
+      ]
+    },
+    {
+      "tag": "Mittwoch",
+      "datum": "28.10.",
+      "feiertag": false,
+      "extra_info": "",
+      "extra_info_bold": false,
+      "gerichte": [
+        {
+          "titel": "Gebratenes Tilapiafilet",
+          "fleisch_num": "4",
+          "beschreibung": "mit Zitronen-Thymiansoße, gebackenem Blumenkohl und Dillkartoffeln",
+          "allergene": "(A, D, G, L)",
+          "preis": "8,70 €",
+          "is_vegan": false,
+          "vegan_opt": false,
+          "vegan": false
+        },
+        {
+          "titel": "Rote-Bete-Risotto",
+          "fleisch_num": "",
+          "beschreibung": "mit Ziegenkäse, Sprossen und Haselnüssen",
+          "allergene": "(G, H, I, L)",
+          "preis": "7,50 €",
+          "is_vegan": false,
+          "vegan_opt": true,
+          "vegan": true
+        }
+      ]
+    },
+    {
+      "tag": "Donnerstag",
+      "datum": "29.10.",
+      "feiertag": false,
+      "extra_info": "",
+      "extra_info_bold": false,
+      "gerichte": [
+        {
+          "titel": "Rheinisches Gulasch",
+          "fleisch_num": "1",
+          "beschreibung": "mit geschmortem Rosenkohl und Kartoffeln",
+          "allergene": "(A, I, L)",
+          "preis": "8,70 €",
+          "is_vegan": false,
+          "vegan_opt": false,
+          "vegan": false
+        },
+        {
+          "titel": "Italienische Gemüsepfanne",
+          "fleisch_num": "",
+          "beschreibung": "mit Brokkoli, Blumenkohl, Bohnen, Champignons, Paprika, Artischocken, Rigatoni und Parmesan",
+          "allergene": "(A, G)",
+          "preis": "7,50 €",
+          "is_vegan": false,
+          "vegan_opt": true,
+          "vegan": true
+        }
+      ]
+    },
+    {
+      "tag": "Freitag",
+      "datum": "30.10.",
+      "feiertag": false,
+      "extra_info": "",
+      "extra_info_bold": false,
+      "gerichte": [
+        {
+          "titel": "Schweineschnitzel",
+          "fleisch_num": "2",
+          "beschreibung": "mit Salbeisoße, Speck-Bohnen und Ofenkartoffeln",
+          "allergene": "(A, C, G, L)",
+          "preis": "8,70 €",
+          "is_vegan": false,
+          "vegan_opt": false,
+          "vegan": false
+        },
+        {
+          "titel": "Gnocchi",
+          "fleisch_num": "",
+          "beschreibung": "mit Basilikumcreme",
+          "allergene": "(A, C, G, H)",
+          "preis": "7,50 €",
+          "is_vegan": false,
+          "vegan_opt": true,
+          "vegan": true
+        }
+      ]
+    }
+  ],
+  "style_settings": {
+    "color_title": "#2c3e50",
+    "bold_title": true,
+    "color_desc": "#444444",
+    "bold_desc": false,
+    "color_price": "#333333",
+    "bold_price": true,
+    "color_allergens": "#666666",
+    "bold_allergens": false,
+    "color_extra": "#1e5638",
+    "bold_extra": false,
+    "color_specials": "#2c3e50",
+    "bold_specials": true,
+    "vegan_align": "left",
+    "specials_gap": 50.0
+  },
+  "rect_settings": {
+    "show": true,
+    "fill_hex": "#F5FAF9",
+    "opacity": 1.0,
+    "radius": 0.0,
+    "border_enabled": false,
+    "border_hex": "#DCE5E5",
+    "border_width": 0.5
+  },
+  "html_settings": {
+    "show_dates": true,
+    "heute_title": "Die Gerichte von heute ({wochentag})",
+    "heute_subtitle": "Frisch gekocht für Sie in der Kantine im JKI",
+    "weekend_banner": "Heute ist Wochenende – Die Kantine ist samstags und sonntags geschlossen.",
+    "weekend_title": "Schönes Wochenende!",
+    "desktop_format": "grid5",
+    "mobile_format": "swipe",
+    "default_view": "auto",
+    "display_mode": "grid5",
+    "pdf_download_mode": "relative",
+    "pdf_external_url": "",
+    "kiosk_refresh_minutes": 0
+  }
+}
