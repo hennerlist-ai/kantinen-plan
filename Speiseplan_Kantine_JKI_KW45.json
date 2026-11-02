@@ -1,8 +1,8 @@
 {
   "kw": "45",
-  "zeitraum": "02.-06.11.2026",
+  "zeitraum": "",
   "titel_zusatz": "",
-  "tagessuppe": "Lauch-Karottensuppe mit Erdnüssen | 3,80 € (E, G, I)",
+  "tagessuppe": "Lauch-Kartoffel-Suppe | 3,80 € (E, G, I) mit Wiener | 5,00 €",
   "tagesdessert": "Apfelgrütze mit Pudding & Pistazien | 1,80 € (G, H)",
   "extra_rubriken": [],
   "specials_delta_h": 0.0,
@@ -19,7 +19,7 @@
         {
           "titel": "Currywurst",
           "fleisch_num": "2",
-          "beschreibung": "mit Ofenkartoffeln, Kräuterquark, Tabascozwiebeln und hausgemachter Currysauce",
+          "beschreibung": "mit Ofenkartoffel, Kräuterquark, Tabascozwiebeln und hausgemachter Currysauce",
           "allergene": "(G, I, J, L)",
           "preis": "8,20 €",
           "is_vegan": false,
@@ -46,7 +46,7 @@
       "extra_info_bold": false,
       "gerichte": [
         {
-          "titel": "Hackbraten",
+          "titel": "Hackbraten (1/2)",
           "fleisch_num": "1, 2",
           "beschreibung": "mit Petersilienkartoffeln und buntem Krautsalat",
           "allergene": "(A, C, G, I, L)",
