@@ -1,0 +1,197 @@
+{
+  "kw": "47",
+  "zeitraum": "16.-20.11.2026",
+  "titel_zusatz": "",
+  "tagessuppe": "Grünkohleintopf mit Linsen (vegan) | 3,80 € (A, F, I, L)",
+  "tagesdessert": "Kokosmilchreis mit flambiertem Dosenpfirsich (vegan) | 1,80 € | 1,80 €",
+  "extra_rubriken": [],
+  "specials_delta_h": 0.0,
+  "specials_gap": 50.0,
+  "dish2_offset": 0.0,
+  "tage": [
+    {
+      "tag": "Montag",
+      "datum": "16.11.",
+      "feiertag": false,
+      "extra_info": "",
+      "extra_info_bold": false,
+      "gerichte": [
+        {
+          "titel": "Jägerschnitzel",
+          "fleisch_num": "2",
+          "beschreibung": "mit Ost-Tomatensoße und Spirellinudeln",
+          "allergene": "(A, C, F, I, J, L)",
+          "preis": "7,50 €",
+          "is_vegan": false,
+          "vegan_opt": false,
+          "vegan": false
+        },
+        {
+          "titel": "Knusprige Ofen-Quetschkartoffeln auf Hummus",
+          "fleisch_num": "",
+          "beschreibung": "mit Gurkensalat, Kräuter-Gewürz-Pesto und Joghurt",
+          "allergene": "(G, K)",
+          "preis": "7,20 €",
+          "is_vegan": false,
+          "vegan_opt": true,
+          "vegan": true
+        }
+      ]
+    },
+    {
+      "tag": "Dienstag",
+      "datum": "17.11.",
+      "feiertag": false,
+      "extra_info": "",
+      "extra_info_bold": false,
+      "gerichte": [
+        {
+          "titel": "Fleischpflanzerl mit Ofenkartoffeln",
+          "fleisch_num": "1, 2",
+          "beschreibung": "dazu Sesamkraut und Limetten-Mayonnaise",
+          "allergene": "(A, C, F, J, K)",
+          "preis": "8,70 €",
+          "is_vegan": false,
+          "vegan_opt": false,
+          "vegan": false
+        },
+        {
+          "titel": "Kürbis-Linsen-Curry",
+          "fleisch_num": "",
+          "beschreibung": "mit Kokosmilch, Topping aus Granatapfelkernen und Saaten, dazu Reis",
+          "allergene": "(I, L)",
+          "preis": "6,80 €",
+          "is_vegan": true,
+          "vegan_opt": false,
+          "vegan": true
+        }
+      ]
+    },
+    {
+      "tag": "Mittwoch",
+      "datum": "18.11.",
+      "feiertag": false,
+      "extra_info": "",
+      "extra_info_bold": false,
+      "gerichte": [
+        {
+          "titel": "Gebratenes Rotbarschfilet",
+          "fleisch_num": "4",
+          "beschreibung": "mit Pastinaken-Kartoffelpüree, gegrillter Zucchini und Senfsoße",
+          "allergene": "(D, G, J, I)",
+          "preis": "8,70 €",
+          "is_vegan": false,
+          "vegan_opt": false,
+          "vegan": false
+        },
+        {
+          "titel": "Schmorwirsing mit Tomaten",
+          "fleisch_num": "",
+          "beschreibung": "dazu gebratenen Kräuter-Schupfnudeln",
+          "allergene": "(A, I)",
+          "preis": "7,00 €",
+          "is_vegan": true,
+          "vegan_opt": false,
+          "vegan": true
+        }
+      ]
+    },
+    {
+      "tag": "Donnerstag",
+      "datum": "19.11.",
+      "feiertag": false,
+      "extra_info": "",
+      "extra_info_bold": false,
+      "gerichte": [
+        {
+          "titel": "Rinderroulade",
+          "fleisch_num": "1",
+          "beschreibung": "mit dunkler Soße, Semmelknödeln und Apfel-Rotkohl",
+          "allergene": "(A, C, F, G, I, J)",
+          "preis": "8,70 €",
+          "is_vegan": false,
+          "vegan_opt": false,
+          "vegan": false
+        },
+        {
+          "titel": "Süßkartoffelstampf mit  geschmorten Schalotten",
+          "fleisch_num": "",
+          "beschreibung": "dazu Erbsen-Bohnen-Schoten-Salat³ mit Kräutern und Gewürzen",
+          "allergene": "",
+          "preis": "7,20 €",
+          "is_vegan": true,
+          "vegan_opt": false,
+          "vegan": true
+        }
+      ]
+    },
+    {
+      "tag": "Freitag",
+      "datum": "20.11.",
+      "feiertag": false,
+      "extra_info": "",
+      "extra_info_bold": false,
+      "gerichte": [
+        {
+          "titel": "Schnitzel",
+          "fleisch_num": "2",
+          "beschreibung": "mit Mandel-Brokkoli, Blumenkohlschaum und Petersilien-Kartoffeln",
+          "allergene": "(H)",
+          "preis": "8,70 €",
+          "is_vegan": false,
+          "vegan_opt": false,
+          "vegan": false
+        },
+        {
+          "titel": "Gemüse-Nudelpfanne",
+          "fleisch_num": "",
+          "beschreibung": "leicht pikant, mit Rigatoni, div. Gemüse, Limette und Knoblauch, dazu Salat",
+          "allergene": "(A, I, J)",
+          "preis": "7,00 €",
+          "is_vegan": true,
+          "vegan_opt": false,
+          "vegan": true
+        }
+      ]
+    }
+  ],
+  "style_settings": {
+    "color_title": "#2c3e50",
+    "bold_title": true,
+    "color_desc": "#444444",
+    "bold_desc": false,
+    "color_price": "#333333",
+    "bold_price": true,
+    "color_allergens": "#666666",
+    "bold_allergens": false,
+    "color_extra": "#1e5638",
+    "bold_extra": false,
+    "color_specials": "#2c3e50",
+    "bold_specials": true,
+    "vegan_align": "left",
+    "specials_gap": 50.0
+  },
+  "rect_settings": {
+    "show": true,
+    "fill_hex": "#F5FAF9",
+    "opacity": 1.0,
+    "radius": 0.0,
+    "border_enabled": false,
+    "border_hex": "#DCE5E5",
+    "border_width": 0.5
+  },
+  "html_settings": {
+    "show_dates": true,
+    "heute_title": "Die Gerichte von heute ({wochentag})",
+    "heute_subtitle": "Frisch gekocht für Sie in der Kantine im JKI",
+    "weekend_banner": "Heute ist Wochenende – Die Kantine ist samstags und sonntags geschlossen.",
+    "weekend_title": "Schönes Wochenende!",
+    "desktop_format": "grid5",
+    "mobile_format": "swipe",
+    "default_view": "auto",
+    "display_mode": "grid5",
+    "pdf_download_mode": "relative",
+    "pdf_external_url": "",
+    "kiosk_refresh_minutes": 0
+  }
+}
